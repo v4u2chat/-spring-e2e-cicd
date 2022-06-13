@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    // tools {
-    //     maven 'Maven 3.6.3'
-    //     jdk 'jdk11'
-    // }
+    tools { 
+      maven 'M2_HOME' 
+      jdk 'JDK11' 
+    }
     stages {
         stage ('Initialize') {
             steps {
@@ -16,7 +16,11 @@ pipeline {
 
         stage ('Build') {
             steps {
-                sh 'mvn clean package' 
+                git url: 'https://github.com/v4u2chat/spring-e2e-cicd'
+                withMaven(){
+                    sh 'mvn clean package'    
+                }
+                 
             }
             post {
                 success {
