@@ -1,9 +1,9 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven 3.6.3'
-        jdk 'jdk11'
-    }
+    // tools {
+    //     maven 'Maven 3.6.3'
+    //     jdk 'jdk11'
+    // }
     stages {
         stage ('Initialize') {
             steps {
@@ -16,7 +16,7 @@ pipeline {
 
         stage ('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true clean install' 
+                sh 'mvn clean package' 
             }
             post {
                 success {
