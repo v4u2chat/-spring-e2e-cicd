@@ -16,7 +16,7 @@ pipeline {
 
         stage ('Build') {
             steps {
-                git url: 'https://github.com/v4u2chat/spring-e2e-cicd'
+                git url: 'https://github.com/v4u2chat/spring-e2e-cicd.git'
                 withMaven(){
                     sh 'mvn clean package'    
                 }
